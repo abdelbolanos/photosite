@@ -1,0 +1,42 @@
+<div id="content">
+ <div class="gallery">
+ 
+  <div class="_title" >{{category}}</div>
+ 
+        <span class='item_container' ng-repeat="photo in photos">
+            <a href="{{photo.pageURI}}"><img ng-src="{{photo.imageURIResized200x200}}" class="item"/></a>
+            <span class="hidden" >{{photo.imageURI}}</span>
+            <span class="description" >
+                <img src="" />
+                <br/>
+                <br/>
+        Title: {{photo.title}}
+        <br/>
+                Dimensions: {{photo.width}} x {{photo.height}}
+            </span>
+        </span>
+     
+     <div class="footer_lists">
+       <div id="left">  
+         <div class="title">CATEGORIES</div>
+         <div class="category_item first"><a href="/#category/architecture">Architecture</a></div>
+         <div class="category_item"><a href="/#category/flora-fauna">Fauna & Flora</a></div>
+         <div class="category_item"><a href="/#category/objects">Objects</a></div>
+         <div class="category_item"><a href="/#category/food">Food</a></div>
+         <div class="category_item"><a href="/#category/emotions">Emotions</a></div>
+         <div class="category_item"><a href="/#category/freestock" title="Stock Photos Free">Free Stock Photos</a></div>
+       </div> 
+       <div id="center">
+           <div class="title">NEWEST PHOTOGRAPHS</div>
+                <div class="last_three" ng-repeat="photo in newest">
+                   <a href="{{photo.pageURI}}"><img ng-src="{{photo.imageURIResized200x200}}" /></a>
+               </div> 
+       </div> 
+       <div id="right">
+           <a class="twitter-timeline" href="https://twitter.com/affordphotograp" data-widget-id="440188785955835904">Tweets by @affordphotograp</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>   
+     </div>
+     
+ </div>
+</div>

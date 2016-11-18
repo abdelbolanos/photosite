@@ -1,0 +1,92 @@
+<div id="content">
+
+  <ul class="bxslider">
+    <li id="banner1">
+       <p id="pbanner1">
+      <span class="big">Get ready</span> to start browsing our galleries with our incredible prices! You will find stock photographs from different categories, all of them <a href="faqs.php">royalty-free</a>!    
+            <span class="category">Architecture</span>
+       </p>
+    </li>
+    <li id="banner2">
+      <p id="pbanner2">
+          <span class="big">With us</span> the file size doesn't matter anymore! <br/>With only one price you will have your photos with big <a href="faqs.php">dimensions!</a>. Plus, <span class="underlined">no monthly subscriptions!</span> </br>       
+          <span class="category">Emotions</span>
+      </p>
+    </li>
+    <li id="banner4">
+      <p class="pbanner">
+          <span class="big">Discover:</span>
+     our colors throughout the seasons... 
+          <span class="category">Flora &AMP; Fauna</span>
+      </p>
+    </li>
+    <li id="banner5">
+      <p class="pbanner">
+          <span class="big">A Taste:</span>
+     of multi-cultural dishes... 
+          <span class="category">Food</span>
+      </p>
+    </li>
+    <li id="banner3">
+      <p class="pbanner">
+     <span class="big">As easy as:</span>
+     Add the photo(s) to your shopping cart | 
+     Proceed with checkout through a secure payment page | 
+     You get your photo(s) after being redirected to our website.
+           <span class="category">Objects</span>
+      </p>
+    </li>
+    
+  </ul>
+  <br/>
+  <p style="max-width: 1050px; margin: 0 auto; text-align: center;">
+      <span class="big">Royalty Free Stock Images</span> <br/> for your presentations, website, brochure and magazines.
+      <br/>
+      Help people connect with you through our incredible selection of photos. 
+    
+  </p>    
+  <form action="search-images" method="get" id="search_form">
+      <input type="text" name="search" id="search_field" placeholder="Search"/>
+      <input type="submit" value="GO" id="search_submit"/>
+  </form>
+       
+     <div class="footer_lists" >
+          <div id="left">  
+            <div class="title">CATEGORIES</div>
+            <div class="category_item first"><a href="architecture" title="Stock Photos Architecture">Architecture</a></div>
+            <div class="category_item"><a href="flora-fauna" title="Stock Photos Flora Fauna">Fauna & Flora</a></div>
+            <div class="category_item"><a href="objects" title="Stock Photos Objects">Objects</a></div>
+            <div class="category_item"><a href="food" title="Stock Photos Food">Food</a></div>
+            <div class="category_item"><a href="emotions" title="Stock Photos Emotions">Emotions</a></div>
+            <div class="category_item"><a href="freestock" title="Stock Photos Free">Free Stock Photos</a></div>
+          </div>
+         <div id="center">
+              <div class="title">NEWEST PHOTOGRAPHS</div>
+              <div class="last_three" ng-repeat="photo in newest">
+                  <div>
+                      <a href="{{ photo.pageURI }}">
+                        <img ng-src="{{ photo.imageURI }}" />
+                      </a>
+                  </div>
+              </div>
+         </div>
+          <div id="right">
+             <a class="twitter-timeline" href="https://twitter.com/affordphotograp" data-widget-id="440188785955835904">Tweets by @affordphotograp</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+         </div>  
+        </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){
+      //$('.bxslider').bxSlider();
+      
+       $('.bxslider').bxSlider({
+        slideWidth: 1050,
+        slideHeight: 300,
+        auto: true,
+        speed: 1500,
+        pause: 6000,
+        autoHover: true
+      });
+  });
+</script>

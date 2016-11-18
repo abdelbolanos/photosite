@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Photosite</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel='stylesheet' href='bower_components/bxslider-4/dist/jquery.bxslider.css' />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet' type='text/css'/>
+  </head>
+  <body ng-app="photositeApp">
+    <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div class="header">
+        <!-- AddThis Button BEGIN -->
+        <div class="addthis_toolbox addthis_default_style ">
+            <a class="addthis_button_preferred_1"></a>
+            <a class="addthis_button_preferred_2"></a>
+            <a class="addthis_button_preferred_3"></a>
+            <a class="addthis_button_preferred_4"></a>
+            <a class="addthis_button_compact"></a>
+        </div>
+        <script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-51c0e2a23b86757e"></script>
+        <!-- AddThis Button END --> 
+        <div class="clear"></div> 
+        <div id="mainmenu">
+            <ul id="nav">
+                <li><a href="/#/">Home</a></li>
+                <li>
+                    Categories
+                    <ul>
+                        <a href="/#/category/architecture" alt="Architecture"><li>Architecture</li></a>
+                        <a href="/#/category/florafauna" alt="Flora & Fauna"><li>Fauna & Flora</li></a>
+                        <a href="/#/category/objects" alt="Objects"><li>Objets</li></a>
+                        <a href="/#/category/food" alt="Food"><li>Food</li></a>
+                        <a href="/#/category/emotions" alt="Emotions"><li>Emotions</li></a>
+                    </ul>
+                </li>
+                <li><a href="/#/news" alt="News">News</a></li>
+                <li><a href="/#/contact" alt="Contact us">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+      <div ng-view=""></div>
+    </div>
+
+    <div class="footer">
+      Copyright &copy; 2014 
+      </br>
+      </br>
+      <a href="/#/news">news</a> | <a href="/#/faqs">faqs</a> | <a href="/#/faqs">conditions</a> | <a href="/#/contact">contact us</a>
+    </div>
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/bxslider-4/dist/jquery.bxslider.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+
+    <script src="scripts/services/apiService.js"></script>
+
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/about.js"></script>
+
+    <script src="scripts/controllers/category/categoryController.js"></script>
+
+    <script src="scripts/controllers/admin/adminListController.js"></script>
+
+
+    <!-- endbuild -->
+
+</body>
+</html>
