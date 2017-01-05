@@ -39,6 +39,7 @@ data:
     image: mysql:latest
     volumes:
         - ./database:/var/lib/mysql
+        - ../sql:/home/sql
     command: "true"
 
 
