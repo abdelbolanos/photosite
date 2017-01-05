@@ -16,9 +16,9 @@ $routes = [
         'type' => 'resize'
     ],
     [
-        'route' => 'admin/new',
+        'route' => 'admin/list',
         'controller' => Controller\AdminController::class,
-        'action' => 'new',
+        'action' => 'list',
         'type' => 'controller'
     ],
     [

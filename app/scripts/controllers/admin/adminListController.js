@@ -19,10 +19,18 @@ angular
                 controller: 'adminListController',
         });
     })
-    .controller('adminListController', ['$scope', function ($scope) {
-        $scope.awesomeThings = [
-        'HTML5 Boilerplate',
-        'AngularJS',
-        'Karma'
-        ];
+    .controller('adminListController', ['$scope', 'adminService', function ($scope, adminService) {
+    	
+	$scope.photoList = null;
+
+	adminService.listAdmin.then(
+	    function(data) {
+	        $scope.photoList = data;
+	    },
+	    function(error) {
+	
+	    }
+        );
+            
+
     }]);
