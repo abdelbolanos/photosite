@@ -6,24 +6,34 @@
 
     <div class="form-group">
         <label for="title">Title</label> 
-        <input type="text" name="title" id="title" ng-model="photoData.title" />
+        <input type="text"
+               class="form-control" 
+               name="title" 
+               ng-model="photoData.title" />
     </div>
 
     <div class="form-group">
-        <label>Original Photo(similar name)</label>
-        <input type="file" name="original_photo" />
+        <label for="title">Original Photo(similar name)</label>
+        <input type="file" 
+               class="form-control" 
+               name="original_photo" />
         {{( action == 'edit' ) ? photoData.original_path : ''}}
     </div>
 
 
     <div class="form-group">
         <label>Price</label>
-        <input type="text" name="price" ng-model="photoData.price" />
+        <input type="text" 
+               class="form-control" 
+               name="price" 
+               ng-model="photoData.price" />
     </div>
 
     <div class="form-group">
-        <label>Category</label>
-        <select name="category" ng-model="photoData.category">
+        <label for="category">Category</label>
+        <select name="category"
+                class="form-control"  
+                ng-model="photoData.category">
             <option ng-repeat="category in allCategories" value="{{category}}" >
                 {{category}}
             </option>
@@ -31,17 +41,26 @@
     </div>
 
     <div class="form-group">
-        <label>Code</label>
-        <textarea name="code" ng-model="photoData.code"></textarea>
+        <label for="code">Code</label>
+        <textarea name="code" 
+                  class="form-control" 
+                  ng-model="photoData.code">
+        </textarea>
     </div>
 
     <div class="form-group">
-        <label>Tags</label>
-        <input type="text" name="tags" ng-model="photoData.tags"/>
+        <label for-"tags">Tags</label>
+        <input type="text" 
+               class="form-control"
+               name="tags" 
+               ng-model="photoData.tags"/>
     </div>
 
     <div class="form-group">
-        <button type="submit" id="submit_new_photo" name="add_photo" value="" >
+        <button type="submit"
+                class="btn btn-primary"
+                id="submit_new_photo" 
+                name="add_photo"  >
             {{(action == 'edit') ? 'Edit' : 'Add'}}
         </button>
     </div>
