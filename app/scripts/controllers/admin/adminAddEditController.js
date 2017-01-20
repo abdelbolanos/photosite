@@ -52,4 +52,8 @@ angular
             if ($scope.action == 'edit') {
                 $scope.photoData = photoData.data.photo;
             }
+
+            $scope.add = function() {
+                $log.debug($scope.photoData);
+            }
     }]);

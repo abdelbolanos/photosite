@@ -2,7 +2,7 @@
     {{(action == 'edit') ? 'Edit Photo' : 'Add Photo'}}
 </h2>
 
-<form name="addEditForm" novalidate>
+<form name="addEditForm" novalidate ng-submit="add()">
 
     <div class="form-group">
         <label for="title">Title</label> 
@@ -13,8 +13,9 @@
     </div>
 
     <div class="form-group">
-        <label for="title">Original Photo(similar name)</label>
-        <input type="file" 
+        <label for="original_photo">Original Photo(similar name)</label>
+        <input type="file"
+               file-read="photoData.original_photo"
                class="form-control" 
                name="original_photo" />
         {{( action == 'edit' ) ? photoData.original_path : ''}}
@@ -60,7 +61,7 @@
         <button type="submit"
                 class="btn btn-primary"
                 id="submit_new_photo" 
-                name="add_photo"  >
+                name="add_photo">
             {{(action == 'edit') ? 'Edit' : 'Add'}}
         </button>
     </div>
