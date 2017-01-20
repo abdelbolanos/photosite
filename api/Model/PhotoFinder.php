@@ -8,6 +8,13 @@ class PhotoFinder{
     const EMOTIONS = 'emotions';
     const OBJECTS = 'objects';
     const FOOD = 'food';
+    const allCategories = [
+        self::FLORAFAUNA,
+        self::ARCHITECTURE,
+        self::EMOTIONS,
+        self::OBJECTS,
+        self::FOOD
+    ];
 
     public $category;
     
@@ -113,10 +120,21 @@ class PhotoFinder{
         $offset = ( $page > 1 ) ? $limit * ( $page - 1 )  :  0;
         
         $photo_array = array();
-        $std  = $DB_PDO->prepare("SELECT * FROM `images` WHERE `category` = :category  LIMIT :limit OFFSET :offset ");
-        $std->bindValue(':category', $this->category);
-        $std->bindValue(':limit', $limit, \PDO::PARAM_INT);
-        $std->bindValue(':offset', $offset, \PDO::PARAM_INT);
+        $sql  = "SELECT * FROM `images`";
+
+        if (!empty($this->category)) {
+            $sql .= " WHERE `category` = :category ";
+        }
+
+        $sql .= " LIMIT :limit OFFSET :offset;";
+
+        $std  = $DB_PDO->prepare($sql);
+
+        if (!empty($this->category)) {
+            $std->bindValue(':category', $this->category);
+        }
+        $std->bindValue(':limit', intval($limit), \PDO::PARAM_INT);
+        $std->bindValue(':offset', intval($offset), \PDO::PARAM_INT);
         if($std->execute()){
             while( $row = $std->fetch(\PDO::FETCH_ASSOC) ){
                 $photo = new Photo($row);
@@ -131,6 +149,7 @@ class PhotoFinder{
         }else{
             //send error message TODO
             error_log(print_r($std->errorInfo(),true).'  '.__FILE__.' line:'.__LINE__ );
+            var_dump($std->errorInfo());
         }
         return $photo_array;
     }
@@ -140,12 +159,33 @@ class PhotoFinder{
     */
     public function getTotal(){
         global $DB_PDO;
-        $std  = $DB_PDO->prepare("SELECT COUNT(*) AS total FROM `images` WHERE `category` = :category");
+        $sql = "SELECT COUNT(*) AS total FROM `images`";
+        
+        if (!empty($this->category)) {
+            $sql .= " WHERE `category` = :category";
+        }
+
+        $std  = $DB_PDO->prepare($sql);
+
+        if (!empty($this->category)) {
             $std->bindValue(':category', $this->category);
+        }
+        
         $std->execute();
         $row = $std->fetch(\PDO::FETCH_ASSOC);
         return $row['total'];
     }
+
+    /**
+     * @param  int total elements
+     * @param  int limit by pagination
+     * @return int total pages
+     */
+    public static function getTotalPages(int $total, int $limit)
+    {
+        return ceil( $total / $limit );
+    }
+
         
         /*
          * Get the last three photos insertd in any category

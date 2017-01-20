@@ -17,20 +17,40 @@ angular
             .when('/admin/list', {
                 templateUrl: 'scripts/controllers/admin/views/adminList.html',
                 controller: 'adminListController',
-        });
+                resolve: {
+                    'listData' : function(adminService) {
+                        return adminService.listAdmin();
+                    }
+                }
+            })
+            .when('/admin/list/:page', {
+                templateUrl: 'scripts/controllers/admin/views/adminList.html',
+                controller: 'adminListController',
+                resolve: {
+                    'listData' : function($route, adminService) {
+                        return adminService.listAdmin($route.current.params.page);
+                    }
+                }
+            });
     })
-    .controller('adminListController', ['$scope', 'adminService', function ($scope, adminService) {
-    	
-	$scope.photoList = null;
+    .controller('adminListController', [
+        '$scope', '$log', '$routeParams', 'adminService', 'listData',
+        function ($scope, $log, $routeParams, adminService, listData) {
+        
+            var range = function(start, end) {
+                var input = [];
+                var min = parseInt(start);
+                var max = parseInt(end);
+                for (var i=min; i<=max; i++){
+                  input.push(i);
+                }
+                return input;
+            }
 
-	adminService.listAdmin.then(
-	    function(data) {
-	        $scope.photoList = data;
-	    },
-	    function(error) {
-	
-	    }
-        );
-            
+            $scope.photoList = listData.data.photos;
+            $scope.page = listData.data.page;
+            $scope.total = listData.data.total;
+            $scope.totalPages = listData.data.totalPages;
+            $scope.pages = range(1, listData.data.totalPages);
 
     }]);

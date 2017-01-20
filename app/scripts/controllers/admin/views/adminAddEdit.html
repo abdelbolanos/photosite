@@ -1,0 +1,49 @@
+<h2>
+    {{(action == 'edit') ? 'Edit Photo' : 'Add Photo'}}
+</h2>
+
+<form name="addEditForm" novalidate>
+
+    <div class="form-group">
+        <label for="title">Title</label> 
+        <input type="text" name="title" id="title" ng-model="photoData.title" />
+    </div>
+
+    <div class="form-group">
+        <label>Original Photo(similar name)</label>
+        <input type="file" name="original_photo" />
+        {{( action == 'edit' ) ? photoData.original_path : ''}}
+    </div>
+
+
+    <div class="form-group">
+        <label>Price</label>
+        <input type="text" name="price" ng-model="photoData.price" />
+    </div>
+
+    <div class="form-group">
+        <label>Category</label>
+        <select name="category" ng-model="photoData.category">
+            <option ng-repeat="category in allCategories" value="{{category}}" >
+                {{category}}
+            </option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Code</label>
+        <textarea name="code" ng-model="photoData.code"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label>Tags</label>
+        <input type="text" name="tags" ng-model="photoData.tags"/>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" id="submit_new_photo" name="add_photo" value="" >
+            {{(action == 'edit') ? 'Edit' : 'Add'}}
+        </button>
+    </div>
+
+</form>

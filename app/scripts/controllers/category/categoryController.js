@@ -37,8 +37,8 @@ angular.module('photositeApp')
             }
 
             var promises = [
-                apiService.apiHttp('/api/category/' + category),
-                apiService.apiHttp('/api/photo/newest')
+                apiService.apiHttp('category' + category),
+                apiService.apiHttp('photo/newest')
             ];
 
             var allPromises = $q.all(promises);

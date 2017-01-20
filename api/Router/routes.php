@@ -22,6 +22,12 @@ $routes = [
         'type' => 'controller'
     ],
     [
+        'route' => 'admin/photo/(.*)',
+        'controller' => Controller\AdminController::class,
+        'action' => 'photo',
+        'type' => 'controller'
+    ],
+    [
         'route' => 'photo/list',
         'controller' => Controller\PhotoController::class,
         'action' => 'list',
@@ -37,6 +43,12 @@ $routes = [
         'route' => 'category/(.*)',
         'controller' => Controller\PhotoController::class,
         'action' => 'category',
+        'type' => 'controller'
+    ],
+    [
+        'route' => 'allCategories',
+        'controller' => Controller\PhotoController::class,
+        'action' => 'allCategories',
         'type' => 'controller'
     ],
 ];

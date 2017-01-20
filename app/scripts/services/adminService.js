@@ -9,18 +9,26 @@
  */
 angular
     .module('photositeApp')
-    .factory('adminService', ['$rootScope, $q, $http', function ($rootScope, $q, $http) {
+    .factory('adminService', [ 
+        'apiService', 
+        function (apiService) {
 
-    	function listAdmin () {
-    		$http({
-    			method: 'GET',
-    			url: 'admin/list'
-    		});
+            var listAdmin = function(page) {
+                return apiService.apiHttp(
+                    'admin/list',
+                    {'page': page}
+                );
+            }
 
+            var getPhotoAdmin = function(id) {
+                return apiService.apiHttp(
+                    'admin/photo/' + id
+                );
+            }
 
-    	}
-
-    	return {
-    		'listAdmin': listAdmin
-    	};
-    }]);
+            return {
+                'listAdmin': listAdmin,
+                'getPhotoAdmin': getPhotoAdmin
+            };
+        }
+    ]);

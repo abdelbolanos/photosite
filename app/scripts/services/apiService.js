@@ -20,7 +20,7 @@ angular
 
             var configuration = {
                 method: method,
-                url: protocol + hostname + ':' + port + url,
+                url: protocol + hostname + ':' + port + '/api/' +url,
                 params: params
             };
 

@@ -21,8 +21,7 @@ class PhotoController extends Controller
         $photo_finder = new PhotoFinder( $category );
         $photos_array = $photo_finder->getAllImagesWithPagination($LIMIT, $PAGE);
         $TOTAL = $photo_finder->getTotal();
-
-        $TOTAL_PAGES = round( $TOTAL / $LIMIT );
+        $TOTAL_PAGES = PhotoFinder::getTotalPages($TOTAL, $LIMIT);
 
         $pagination = '';
         for( $i=1; $i <= $TOTAL_PAGES; $i++ ){
@@ -62,6 +61,13 @@ class PhotoController extends Controller
         return $this->responseOk([
             'category' => $category,
             'photos' => $photos_array
+        ]);
+    }
+
+    public function allCategories()
+    {
+        return $this->responseOk([
+            'allCategories' => PhotoFinder::allCategories
         ]);
     }
 }

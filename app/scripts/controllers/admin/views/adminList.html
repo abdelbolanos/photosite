@@ -1,4 +1,45 @@
-<div ng-repeat="photo in photoList">
-    <div>{{photo.name}}</div>
+<div>
+    <a href="#/admin/add"> Add Photo</a>
 </div>
 
+<div>
+    <table>
+        <thead>
+            <th>id</th>
+            <th>title</th>
+            <th>crdate</th>
+            <th>date_modified</th>
+            <th>file_name</th>
+            <th>price</th>
+            <th>category</th>                        
+            <th>tags</th>
+            <th>ACTIONS</th>
+        </thead>
+
+        <tr ng-repeat="photo in photoList">
+            <td>{{photo.id}}</td>
+            <td>{{photo.title}}</td>
+            <td>{{photo.crdate}}</td>
+            <td>{{photo.date_modified}}</td>
+            <td>{{photo.file_name}}</td>
+            <td>{{photo.price}}</td>
+            <td>{{photo.category}}</td>
+            <td>{{photo.tags}}</td>
+            <td>
+                <a href="#/admin/edit/{{photo.id}}">UPDATE</a>
+                <a href="delete.php?id=<?php echo $photo->id ?>" >DELETE</a>
+            </td>
+        </tr>
+    </table>
+    <h2 ng-if="photoList.lenght === 0">No photo for this category</h2>
+    
+</div>
+<div>
+    Pagination:
+    <b ng-repeat="i in pages">
+        <span ng-if="i == page">{{i}}</span>
+        <a ng-if="i != page" href="#/admin/list/{{i}}">
+            {{i}}
+        </a>
+    </b>
+    -- TOTAL: {{total}}</div>
