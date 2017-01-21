@@ -34,8 +34,6 @@ angular
                 configuration['data'] =  $httpParamSerializerJQLike(params);
             }
 
-            console.log(configuration);
-
             return $http(configuration);
         }
 

@@ -63,7 +63,6 @@ angular
                 };
 
                 var photoData = angular.copy($scope.photoData);
-                $log.debug(photoData);
                 adminService.addPhoto(photoData).then(
                     addOk,
                     addError
