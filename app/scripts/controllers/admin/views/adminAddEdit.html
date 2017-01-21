@@ -16,6 +16,7 @@
         <label for="original_photo">Original Photo(similar name)</label>
         <input type="file"
                file-read="photoData.original_photo"
+               file-name="photoData.original_photo_name"
                class="form-control" 
                name="original_photo" />
         {{( action == 'edit' ) ? photoData.original_path : ''}}

@@ -63,6 +63,8 @@ class Router
 
         header('Access-Control-Allow-Origin: http://localhost:80');
         header('Access-Control-Allow-Origin: http://localhost:9000');
+        header('Access-Control-Allow-Methods: POST,GET,PUT,DELETE');
+        header('Access-Control-Allow-Headers: Content-Type,Accept');
         http_response_code($response['ResponseCode']);
 
         switch ($this->route['type']) {

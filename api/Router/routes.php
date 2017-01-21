@@ -28,6 +28,12 @@ $routes = [
         'type' => 'controller'
     ],
     [
+        'route' => 'admin/add',
+        'controller' => Controller\AdminController::class,
+        'action' => 'add',
+        'type' => 'controller'
+    ],
+    [
         'route' => 'photo/list',
         'controller' => Controller\PhotoController::class,
         'action' => 'list',

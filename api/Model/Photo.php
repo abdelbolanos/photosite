@@ -312,4 +312,16 @@ class Photo{
         return $resized_image;
     }
 
+    public static function createImageFromEncode64($string64, $fileSavePath) {
+        try {
+            $string_data = explode(',', $string64)[1];
+            $data = base64_decode($string_data);
+            $image_gd = imagecreatefromstring($data);
+            imagejpeg($image_gd, $fileSavePath, 100);
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
 }

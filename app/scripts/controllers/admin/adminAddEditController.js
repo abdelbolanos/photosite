@@ -54,6 +54,19 @@ angular
             }
 
             $scope.add = function() {
-                $log.debug($scope.photoData);
-            }
+                var addOk = function(response) {
+
+                };
+
+                var addError = function(response) {
+
+                };
+
+                var photoData = angular.copy($scope.photoData);
+                $log.debug(photoData);
+                adminService.addPhoto(photoData).then(
+                    addOk,
+                    addError
+                );
+            };
     }]);

@@ -18,17 +18,26 @@ angular
                     'admin/list',
                     {'page': page}
                 );
-            }
+            };
 
             var getPhotoAdmin = function(id) {
                 return apiService.apiHttp(
                     'admin/photo/' + id
                 );
-            }
+            };
+
+            var addPhoto = function(photoData) {
+                return apiService.apiHttp(
+                    'admin/add',
+                    photoData,
+                    'POST'
+                );
+            };
 
             return {
                 'listAdmin': listAdmin,
-                'getPhotoAdmin': getPhotoAdmin
+                'getPhotoAdmin': getPhotoAdmin,
+                'addPhoto': addPhoto
             };
         }
     ]);

@@ -9,9 +9,14 @@
  */
 angular
     .module('photositeApp')
-    .factory('apiService', ['$rootScope' , '$q', '$http', function ($rootScope, $q, $http) {
+    .factory('apiService', ['$httpParamSerializerJQLike', '$q', '$http', function ( $httpParamSerializerJQLike, $q, $http) {
 
         function apiHttp (url, params, method) {
+            $http.defaults.useXDomain = true;
+
+            // Use x-www-form-urlencoded Content-Type
+            $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
+
             params = params || '';
             method = method || 'GET';
             var hostname = window.location.hostname;
@@ -20,9 +25,16 @@ angular
 
             var configuration = {
                 method: method,
-                url: protocol + hostname + ':' + port + '/api/' +url,
-                params: params
+                url: protocol + hostname + ':' + port + '/api/' + url,
             };
+
+            if (method === 'GET') {
+                configuration['params'] = params;
+            } else if (method === 'POST') {
+                configuration['data'] =  $httpParamSerializerJQLike(params);
+            }
+
+            console.log(configuration);
 
             return $http(configuration);
         }

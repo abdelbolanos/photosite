@@ -31,6 +31,14 @@ class Controller
         ];
     }
 
+    public function responseError ($data)
+    {
+        return [
+            'ResponseCode' => 500,
+            'data' => $data
+        ];
+    }
+
     public function getResizedImage()
     {
         

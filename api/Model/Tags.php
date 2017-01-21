@@ -1,4 +1,6 @@
 <?php
+namespace Model;
+
 /*
 CREATE TABLE  `photosite`.`tags` (
 `imageId` INT( 11 ) NOT NULL ,
