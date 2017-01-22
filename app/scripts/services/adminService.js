@@ -34,10 +34,26 @@ angular
                 );
             };
 
+            var deletePhoto = function(id) {
+                return apiService.apiHttp(
+                    'admin/delete/' + id
+                );
+            }
+
+            var updatePhoto = function(photoData) {
+                return apiService.apiHttp(
+                    'admin/update',
+                    photoData,
+                    'POST'
+                );
+            }
+
             return {
                 'listAdmin': listAdmin,
                 'getPhotoAdmin': getPhotoAdmin,
-                'addPhoto': addPhoto
+                'addPhoto': addPhoto,
+                'deletePhoto': deletePhoto,
+                'updatePhoto': updatePhoto
             };
         }
     ]);

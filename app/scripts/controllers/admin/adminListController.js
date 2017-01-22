@@ -47,6 +47,28 @@ angular
                 return input;
             }
 
+            $scope.random = Math.random();
+
+            $scope.delete = function(id) {
+                adminService.deletePhoto(id).then(
+                    function (response) {
+                        adminService.listAdmin($scope.page).then(
+                            function(listData) {
+                                $scope.photoList = listData.data.photos;
+                                $scope.page = listData.data.page;
+                                $scope.total = listData.data.total;
+                                $scope.totalPages = listData.data.totalPages;
+                                $scope.pages = range(1, listData.data.totalPages);
+                            }
+                        );
+
+                    },
+                    function (error) {
+
+                    }
+                );
+            }
+
             $scope.photoList = listData.data.photos;
             $scope.page = listData.data.page;
             $scope.total = listData.data.total;

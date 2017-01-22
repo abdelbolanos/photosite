@@ -43,19 +43,20 @@ angular
             });
     })
     .controller('adminAddEditController', [
-        '$scope', '$log', '$routeParams', 'adminService', 'allCategories', 'action', 'photoData',
-        function ($scope, $log, $routeParams, adminService, allCategories, action, photoData) {
+        '$scope', '$log', '$routeParams', '$location','adminService', 
+        'allCategories', 'action', 'photoData',
+        function ($scope, $log, $routeParams, $location, adminService, allCategories, action, photoData) {
         
             $scope.action = action;
             $scope.allCategories = allCategories.data.allCategories;
 
-            if ($scope.action == 'edit') {
+            if ($scope.action === 'edit') {
                 $scope.photoData = photoData.data.photo;
             }
 
             $scope.add = function() {
                 var addOk = function(response) {
-
+                    $location.path('/admin/list');
                 };
 
                 var addError = function(response) {
@@ -68,4 +69,20 @@ angular
                     addError
                 );
             };
+
+            $scope.update = function() {
+                var addOk = function(response) {
+                    $location.path('/admin/list');
+                };
+
+                var addError = function(response) {
+
+                };
+
+                var photoData = angular.copy($scope.photoData);
+                adminService.updatePhoto(photoData).then(
+                    addOk,
+                    addError
+                );
+            }
     }]);

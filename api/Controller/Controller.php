@@ -61,7 +61,6 @@ class Controller
 
     public function resizeImage()
     {
-        
         $parts = explode('/', $this->stringUri);
         $photoId = $parts[3];
         $width = $parts[5];

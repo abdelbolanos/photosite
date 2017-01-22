@@ -2,7 +2,7 @@
     {{(action == 'edit') ? 'Edit Photo' : 'Add Photo'}}
 </h2>
 
-<form name="addEditForm" novalidate ng-submit="add()">
+<form name="addEditForm" novalidate ng-submit="(action === 'edit') ? update() : add()">
 
     <div class="form-group">
         <label for="title">Title</label> 

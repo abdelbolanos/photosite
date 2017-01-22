@@ -21,13 +21,40 @@
             <td>{{photo.title}}</td>
             <td>{{photo.crdate}}</td>
             <td>{{photo.date_modified}}</td>
-            <td>{{photo.file_name}}</td>
+            <td>
+                {{photo.file_name}}
+                <img ng-src="{{photo.imageURIResized200x200}}?nocache={{random}}" />
+            </td>
             <td>{{photo.price}}</td>
             <td>{{photo.category}}</td>
             <td>{{photo.tags}}</td>
             <td>
                 <a class="btn btn-primary" href="#/admin/edit/{{photo.id}}">UPDATE</a>
-                <a class="btn btn-danger" href="delete.php?id=<?php echo $photo->id ?>" >DELETE</a>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#photo_{{photo.id}}">DELETE</button>
+
+                <div class="modal" id="photo_{{photo.id}}" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                  <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title">Are you sure to delete?</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">×</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                            <h5>Photo: {{photo.id}}, Title: {{photo.title}}</h5>
+                            <h5>
+                                <img ng-src="{{photo.imageURIResized200x200}}?nocache={{random}}" />
+                            </h5>
+                            <div>
+                                <button type="button" class="btn btn-danger" ng-click="delete(photo.id)" data-dismiss="modal">
+                                    DELETE
+                                </button>
+                            </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
             </td>
         </tr>
     </table>

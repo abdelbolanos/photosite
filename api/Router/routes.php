@@ -34,6 +34,18 @@ $routes = [
         'type' => 'controller'
     ],
     [
+        'route' => 'admin/delete/(.*)',
+        'controller' => Controller\AdminController::class,
+        'action' => 'delete',
+        'type' => 'controller'
+    ],
+    [
+        'route' => 'admin/update',
+        'controller' => Controller\AdminController::class,
+        'action' => 'update',
+        'type' => 'controller'
+    ],
+    [
         'route' => 'photo/list',
         'controller' => Controller\PhotoController::class,
         'action' => 'list',

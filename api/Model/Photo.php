@@ -221,7 +221,7 @@ class Photo{
         $std  = $DB_PDO->prepare("DELETE FROM `images`  WHERE id =:id ");
         $std->bindValue(':id', $this->id);
         $std->execute();
-        
+
         //Delete physical images
         global $PATH_ROOT_FOLDERS;
         unlink( $PATH_ROOT_FOLDERS . $this->original_path . $this->file_name );
@@ -318,10 +318,37 @@ class Photo{
             $data = base64_decode($string_data);
             $image_gd = imagecreatefromstring($data);
             imagejpeg($image_gd, $fileSavePath, 100);
+            imagedestroy($image_gd);
             return true;
         } catch (\Exception $e) {
-            return false;
+            return $e->message;
         }
+    }
+
+    public static function generateImagePaths($original_photo_name, $category, $generate_unique_name=false) {
+        global $PATH_ROOT_FOLDERS;
+        global $PATH_ORIGINAL_FOLDERS;
+        global $PATH_RESIZED_FOLDERS;
+
+        if ($generate_unique_name) {
+            $photo_name_original = 'photo_'.time().'_'.str_replace(' ', '', $original_photo_name);
+            $photo_name_original = preg_replace('/^(.*)?\.(.*)$/', '$1.jpg', $photo_name_original);
+        } else {
+            $photo_name_original = $original_photo_name;
+        }
+
+        $original_path = $PATH_ORIGINAL_FOLDERS . DIRECTORY_SEPARATOR. $category . DIRECTORY_SEPARATOR; 
+        $resized_path = $PATH_RESIZED_FOLDERS . DIRECTORY_SEPARATOR.$category . DIRECTORY_SEPARATOR;
+        $full_path_original =  $PATH_ROOT_FOLDERS . $original_path . $photo_name_original;
+        $full_path_resized = $PATH_ROOT_FOLDERS . $resized_path . $photo_name_original;
+
+        return array(
+            'original_path' => $original_path,
+            'resized_path' => $resized_path,
+            'photo_name_original' => $photo_name_original,
+            'full_path_original' => $full_path_original,
+            'full_path_resized' => $full_path_resized
+        );
     }
 
 }

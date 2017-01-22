@@ -22,7 +22,6 @@ angular
                     scope.$apply(function () {
                         scope.fileRead = loadEvent.target.result;
                         scope.fileName = element[0].value.split(/(\\|\/)/g).pop();
-                        console.log(scope.fileRead);
                     });
                 };
                 reader.readAsDataURL(changeEvent.target.files[0]);
